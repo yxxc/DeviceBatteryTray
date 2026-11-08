@@ -28,3 +28,27 @@ The project uses .NET Framework 4.x and Windows Forms. From this directory, buil
 - [betop-battery](https://github.com/oitsukiii/betop-battery)
 
 This is an independent community project and is not affiliated with MCHOSE or BETOP.
+
+## 中文说明
+
+这是一个适用于 Windows 10 的轻量级桌面电量组件，可在同一处查看以下 2.4G 无线设备的电量：
+
+- 迈从 A7 Ultra 鼠标
+- 迈从 V9 Pro2 耳机
+- 北通鲲鹏 20 手柄
+
+程序通过 Windows HID 直接读取各自的无线接收器，不需要让迈从 HUB 或北通游戏厅保持运行。设备休眠或暂时无响应时，可能无法立即读取新电量，界面会保留上次成功读取的数值。
+
+### 使用方法
+
+运行 `DeviceBatteryTray.exe`。透明桌面组件会自动显示在屏幕右下角，可以拖动，位置会自动记忆；它不会置顶遮挡前台程序。右键点击通知区域图标可刷新设备、打开设置或退出程序。设置中可以调整刷新间隔、低电量通知阈值、通知开关和 Windows 登录时启动。
+
+### 构建
+
+项目使用 .NET Framework 4.x 和 Windows Forms。在项目目录中运行以下命令即可用 Windows 自带的 C# 编译器构建：
+
+```powershell
+& "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /nologo /target:winexe /out:DeviceBatteryTray.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.Runtime.Serialization.dll DeviceBatteryTray.cs
+```
+
+本项目为独立社区工具，与迈从、北通均无隶属关系。
