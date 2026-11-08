@@ -1,0 +1,7 @@
+*.pdb
+*.obj
+*.tmp
+settings.json
+bin/
+obj/
+work/
