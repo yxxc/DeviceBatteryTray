@@ -12,7 +12,7 @@ The app polls each receiver directly through Windows HID. MCHOSE HUB and BETOP G
 
 Run `DeviceBatteryTray.exe`. The transparent desktop widget appears at the lower right and can be dragged; its position is remembered. It stays behind foreground applications. The notification-area icon provides refresh, settings, pinning, and exit actions.
 
-Settings include the polling interval, low-battery alerts and threshold, and start with Windows. Device readings may be unavailable while a device is asleep; the app keeps the last successful reading.
+Settings include the polling interval, low-battery alerts and threshold, and start with Windows. Device readings may be unavailable while a device is asleep; the app keeps the last successful reading and displays cached readings in gray.
 
 ## Build
 
@@ -37,7 +37,7 @@ This is an independent community project and is not affiliated with MCHOSE or BE
 - 迈从 V9 Pro2 耳机
 - 北通鲲鹏 20 手柄
 
-程序通过 Windows HID 直接读取各自的无线接收器，不需要让迈从 HUB 或北通游戏厅保持运行。设备休眠或暂时无响应时，可能无法立即读取新电量，界面会保留上次成功读取的数值。
+程序通过 Windows HID 直接读取各自的无线接收器，不需要让迈从 HUB 或北通游戏厅保持运行。设备断开、休眠或暂时无响应时，程序会保留上次成功读取的电量，并将该设备图标、电量和电量条显示为灰色；本次成功读取时恢复彩色。灰色表示当前未读取到新电量，不代表上次电量数值本身不准确。
 
 ### 使用方法
 

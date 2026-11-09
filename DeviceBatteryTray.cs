@@ -216,12 +216,15 @@ namespace DeviceBatteryTray
             int y = 7 + index * 39;
             if (index > 0) using (Pen separator = new Pen(Color.FromArgb(225, 230, 228))) g.DrawLine(separator, 8, y - 4, Width - 8, y - 4);
             Rectangle iconBox = new Rectangle(10, y + 1, 34, 34);
-            DrawDeviceIcon(g, index, iconBox, accents[index]);
-
             DeviceStatus status;
             bool found = latest.TryGetValue(ids[index], out status);
             string value = found && status.Percent.HasValue ? status.Percent.Value + "%" : "--";
-            Color valueColor = !found || !status.Percent.HasValue ? Muted : (status.Percent.Value <= settings.LowBatteryThreshold ? Color.FromArgb(190, 70, 63) : Ink);
+            bool currentReading = found && status.Available;
+            Color iconColor = currentReading ? accents[index] : Muted;
+            DrawDeviceIcon(g, index, iconBox, iconColor);
+            Color valueColor = !found || !status.Percent.HasValue || !currentReading
+                ? Muted
+                : (status.Percent.Value <= settings.LowBatteryThreshold ? Color.FromArgb(190, 70, 63) : Ink);
             Rectangle percentBox = new Rectangle(129, y + 1, 76, 28);
             DrawOutlinedPercent(g, value, percentBox, valueColor, percentFont);
             Rectangle track = new Rectangle(160, y + 31, 45, 3);
